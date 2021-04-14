@@ -15,14 +15,16 @@ def index():
     return render_template("index.html", items = items)
 
 @app.route('/newitem', methods=['POST'])
-def CreateNew():
+def create_new():
 
     #call add item
     data = request.form.get('newitem')
     session_items.add_item(data)
     #re render
     items = session_items.get_items()
-    return render_template("index.html", items = items)
+    #line changed to use flask funtionality
+    return redirect('/')
+    #return render_template("index.html", items = items)
 
 
 if __name__ == '__main__':
