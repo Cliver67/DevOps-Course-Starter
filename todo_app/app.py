@@ -21,7 +21,7 @@ def create_new():
     data = request.form.get('newitem')
     session_items.add_item(data)
     #re render
-    #items = session_items.get_items()
+    # items = session_items.get_items()
     #line changed to use flask funtionality
     return redirect('/')
     #return render_template("index.html", items = items)
