@@ -1,32 +1,31 @@
 from flask import session
 import requests
 
+boardid = "608a91fd8a30ef4966d68da1"
+trello_key = '0471642aefef5fa1fa76530ce1ba4c85'
+trello_token = '9eb76d9a9d02b8dd40c2f3e5df18556c831d4d1fadbe2c45f8310e6c93b5c548'
 
 def get_items():
 
     """
     Module 2 - amend get_items to use response and Trello api
-    Returns:
-        list: The list of saved items.
+    Returns: response json() containing trello card names / id's and lists id's
     """
 
-    url = 'https://api.trello.com/1/boards/' + '608a91fd8a30ef4966d68da1' + '/cards?fields=name,idList'
+    url = 'https://api.trello.com/1/boards/' + str(boardid) + '/cards?fields=name,idList'
 
     query = {
-        'key': 'ec35814e6002ff80fb49014a7a6f4ab9',
-        'token': '064fb4e3f20e3417bef4a1525a7b6342fbffc2ee90f0b0ab1658a8a0bce906b3'
+        'key': '0471642aefef5fa1fa76530ce1ba4c85',
+        'token': '9eb76d9a9d02b8dd40c2f3e5df18556c831d4d1fadbe2c45f8310e6c93b5c548'
             }
 
-    response = requests.request(
-        "GET",
-        url,
-        params=query
-        )
+    #response = requests.request(
+    #        "GET",
+    #        url,
+    #        params=query
+    #        )
 
-    return response.json()
-
-    #return session.get('items', _DEFAULT_ITEMS.copy())
-
+    return make_get_request(url, query)
 
 def get_item(id):
     """                                                                 
@@ -88,3 +87,31 @@ def complete_item(id):
         save_item(item)
 
     return item
+
+
+def get_lists():
+    
+    url = "https://api.trello.com/1/boards/" + str(boardid) + "/lists"
+
+    query = {
+    'key': trello_key,
+    'token': trello_token
+    }
+
+    lists = make_get_request(url, query)
+    
+    #iterate through response to build lists object for comparison
+    return lists
+
+def make_get_request(url, query):
+
+    geturl = url
+
+    response = requests.request(
+            "GET",
+            geturl,
+            params=query
+            )
+
+    return response.json()
+
