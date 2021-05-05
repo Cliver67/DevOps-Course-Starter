@@ -38,10 +38,17 @@
         {% for item in items %}
           <li class="list-group-item flex-column">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mt-1 mb-1">{{ item.title }}</h5>
+              <!--button to move to doing if item is in todo list-->
+              {% if item.status != 'Completed' %}
+                <a href="{{ url_for('complete_item', id=item.id) }}" class="btn btn-info">Mark as in progress</a>
+              {% endif %}
+              <!--end button if-->
+              <h5 class="mt-1 mb-1">{{ item.name }}</h5>
+              <!--button to move to done if item is in todo or doing list-->
               {% if item.status != 'Completed' %}
                 <a href="{{ url_for('complete_item', id=item.id) }}" class="btn btn-sm btn-primary">Mark as Complete</a>
               {% endif %}
+              <!--end button if-->
             </div>
           </li>
         {% endfor %}
