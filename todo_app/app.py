@@ -30,7 +30,6 @@ from flask import Flask, render_template, redirect, url_for, request
 from todo_app.flask_config import Config
 from todo_app.data import session_items as session
 
-
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -53,6 +52,15 @@ def complete_item(id):
     session.complete_item(id)
     return redirect(url_for('index'))
 
+@app.route('/items/<id>/commence')
+def commence_item(id):
+    session.commence_item(id)
+    return redirect(url_for('index'))
+
+@app.route('/items/<id>/reopen')
+def reopen_item(id):
+    session.reopen_item(id)
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run()

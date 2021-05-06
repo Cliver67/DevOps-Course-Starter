@@ -1,9 +1,10 @@
 from flask import session
 import requests
+import json
 
-boardid = "608a91fd8a30ef4966d68da1"
-trello_key = '0471642aefef5fa1fa76530ce1ba4c85'
-trello_token = '9eb76d9a9d02b8dd40c2f3e5df18556c831d4d1fadbe2c45f8310e6c93b5c548'
+boardid = '608a91fd8a30ef4966d68da1'
+trello_key = 'ec35814e6002ff80fb49014a7a6f4ab9'
+trello_token = '064fb4e3f20e3417bef4a1525a7b6342fbffc2ee90f0b0ab1658a8a0bce906b3'
 
 def get_items():
 
@@ -12,82 +13,57 @@ def get_items():
     Returns: response json() containing trello card names / id's and lists id's
     """
 
-    url = 'https://api.trello.com/1/boards/' + str(boardid) + '/cards?fields=name,idList'
+    url = 'https://api.trello.com/1/boards/' + boardid +'/cards?fields=name,idList'
 
     query = {
-        'key': '0471642aefef5fa1fa76530ce1ba4c85',
-        'token': '9eb76d9a9d02b8dd40c2f3e5df18556c831d4d1fadbe2c45f8310e6c93b5c548'
+        'key': trello_key,
+        'token': trello_token
             }
 
-    #response = requests.request(
-    #        "GET",
-    #        url,
-    #        params=query
-    #        )
+    response = requests.request(
+            "GET",
+            url,
+            params=query
+            )
 
     return make_get_request(url, query)
 
-def get_item(id):
-    """                                                                 
-    Fetches the saved item with the specified ID.
-
-    Args:
-        id: The ID of the item.
-
-    Returns:
-        item: The saved item, or None if no items match the specified ID.
-    """
-    items = get_items()
-    return next((item for item in items if item['id'] == int(id)), None)
-
-
 def add_item(title):
     """
-    Adds a new item with the specified title to the session.
-
+    Makes Trello POST call to create a new card 
+    list predefined as todo hard coded for now
     Args:
-        title: The title of the item.
+        title: The title/name of the item.
 
     Returns:
         item: The saved item.
     """
-    items = get_items()
 
-    # Determine the ID for the item based on that of the previously added item
-    id = items[-1]['id'] + 1 if items else 0
+    url = "https://api.trello.com/1/cards"
 
-    item = { 'id': id, 'title': title, 'status': 'Not Started' }
+    query = {
+        'key': trello_key,
+        'token': trello_token,
+        'idList': '608a9210a25e65624f49806b',
+        'name': title
+        }
 
-    # Add the item to the list
-    items.append(item)
-    session['items'] = items
+    response = requests.request(
+        "POST",
+        url,
+        params=query
+        )
 
-    return item
+    
+    return response.json()
 
-
-def save_item(item):
+def commence_item(id):
     """
-    Updates an existing item in the session. If no existing item matches the ID of the specified item, nothing is saved.
-
+        makes call to move_card with list id for "doing" list
     Args:
-        item: The item to save.
+        id = card id    
     """
-    existing_items = get_items()
-    updated_items = [item if item['id'] == existing_item['id'] else existing_item for existing_item in existing_items]
-
-    session['items'] = updated_items
-
-    return item
-
-def complete_item(id):
-    item = get_item(id)
-
-    if item != None:
-        item['status'] = 'Completed'
-        save_item(item)
-
-    return item
-
+    return move_card(id,str('6092d58e13aa190b1d32ce19'))    
 
 def get_lists():
     
@@ -114,4 +90,53 @@ def make_get_request(url, query):
             )
 
     return response.json()
+
+def move_card(id, listid):
+
+    """
+    
+        make PUT request to update the list a card belongs to 
+        
+    Args:
+        id = card id    
+        listid = destination list id
+    """
+    
+    url = "https://api.trello.com/1/cards/"+ str(id)
+
+    headers = {
+        "Accept": "application/json"
+            }   
+
+    query = {
+    'key': trello_key,
+    'token': trello_token,
+    'idList': listid
+    }
+
+    response = requests.request(
+    "PUT",
+    url,
+    headers=headers,
+    params=query
+    )
+
+    return " Item moved "
+
+def complete_item(id):
+    """
+        makes call to move_card with list id for "Done" list
+    Args:
+        id = card id    
+    """
+
+    move_card(id,str('608aa95fbe10572bf446d3cf'))
+
+def reopen_item(id):
+    """
+        makes call to move_card with list id for "doing" list
+    Args:
+        id = card id    
+    """
+    return move_card(id,str('608a9210a25e65624f49806b'))  
 

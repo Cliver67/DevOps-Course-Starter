@@ -38,15 +38,33 @@
         {% for item in items %}
           <li class="list-group-item flex-column">
             <div class="d-flex w-100 justify-content-between">
-              <!--button to move to doing if item is in todo list-->
-              {% if item.status != 'Completed' %}
-                <a href="{{ url_for('complete_item', id=item.id) }}" class="btn btn-info">Mark as in progress</a>
+              
+              <h6 class="mt-1 mb-1">{{ item.name }}</h6>
+              
+              <!--inactive button to show status of item in list todo / doing / done-->
+              <!--button to control status of item in list  doing / done/ reopen-->
+              {% if item.idList == '608a9210a25e65624f49806b' %}
+                <a class="alert alert-secondary" role="alert">todo</a>
+              {% endif %}
+              {% if item.idList == '6092d58e13aa190b1d32ce19' %}
+                <a class="alert alert-primary" role="alert">Open</a>
+              {% endif %}
+              {% if item.idList == '608aa95fbe10572bf446d3cf' %}
+                <a class="alert alert-success" role="alert">Complete</a>
               {% endif %}
               <!--end button if-->
-              <h5 class="mt-1 mb-1">{{ item.name }}</h5>
-              <!--button to move to done if item is in todo or doing list-->
-              {% if item.status != 'Completed' %}
-                <a href="{{ url_for('complete_item', id=item.id) }}" class="btn btn-sm btn-primary">Mark as Complete</a>
+            </div>
+
+            <div>
+              <!--button to control status of item in list  doing / done/ reopen-->
+              {% if item.idList == '608a9210a25e65624f49806b' %}
+                <a href="{{ url_for('commence_item', id=item.id) }}" class="btn btn-info">Start Item</a>
+              {% endif %}
+              {% if item.idList == '6092d58e13aa190b1d32ce19' %}
+                <a href="{{ url_for('complete_item', id=item.id) }}" class="btn btn-success">Close Item</a>
+              {% endif %}
+              {% if item.idList == '608aa95fbe10572bf446d3cf' %}
+                <a href="{{ url_for('reopen_item', id=item.id) }}" class="btn btn-warning">Re-open Item</a>
               {% endif %}
               <!--end button if-->
             </div>
