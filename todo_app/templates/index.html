@@ -26,10 +26,7 @@
         </form>
       </div>
     </div>
-
   </div>
-
-  
 
   <div class="row">
     <div class="col-md-12">
@@ -44,13 +41,13 @@
               <!--inactive button to show status of item in list todo / doing / done-->
               <!--button to control status of item in list  doing / done/ reopen-->
               {% if item.idList == '608a9210a25e65624f49806b' %}
-                <a class="alert alert-secondary" role="alert">todo</a>
+              <span class="badge badge-secondary">todo</span>
               {% endif %}
               {% if item.idList == '6092d58e13aa190b1d32ce19' %}
-                <a class="alert alert-primary" role="alert">Open</a>
+              <span class="badge badge-primary">Open</span>
               {% endif %}
               {% if item.idList == '608aa95fbe10572bf446d3cf' %}
-                <a class="alert alert-success" role="alert">Complete</a>
+              <span class="badge badge-success">Complete</span>
               {% endif %}
               <!--end button if-->
             </div>
@@ -58,13 +55,13 @@
             <div>
               <!--button to control status of item in list  doing / done/ reopen-->
               {% if item.idList == '608a9210a25e65624f49806b' %}
-                <a href="{{ url_for('commence_item', id=item.id) }}" class="btn btn-info">Start Item</a>
+                <a href="{{ url_for('commence_item', id=item.id) }}" class="badge badge-info">Start Item</a>
               {% endif %}
               {% if item.idList == '6092d58e13aa190b1d32ce19' %}
-                <a href="{{ url_for('complete_item', id=item.id) }}" class="btn btn-success">Close Item</a>
+                <a href="{{ url_for('complete_item', id=item.id) }}" class="badge badge-success">Close Item</a>
               {% endif %}
               {% if item.idList == '608aa95fbe10572bf446d3cf' %}
-                <a href="{{ url_for('reopen_item', id=item.id) }}" class="btn btn-warning">Re-open Item</a>
+                <a href="{{ url_for('reopen_item', id=item.id) }}" class="badge badge-warning">Re-open Item</a>
               {% endif %}
               <!--end button if-->
             </div>
