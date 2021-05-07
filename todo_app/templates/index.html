@@ -40,13 +40,13 @@
               
               <!--inactive button to show status of item in list todo / doing / done-->
               <!--button to control status of item in list  doing / done/ reopen-->
-              {% if item.idList == '608a9210a25e65624f49806b' %}
+              {% if item.idList ==  todo %}
               <span class="badge badge-secondary">todo</span>
               {% endif %}
-              {% if item.idList == '6092d58e13aa190b1d32ce19' %}
+              {% if item.idList == doing %}
               <span class="badge badge-primary">Open</span>
               {% endif %}
-              {% if item.idList == '608aa95fbe10572bf446d3cf' %}
+              {% if item.idList == done %}
               <span class="badge badge-success">Complete</span>
               {% endif %}
               <!--end button if-->

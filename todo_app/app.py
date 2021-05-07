@@ -29,15 +29,20 @@ from flask import Flask, render_template, redirect, url_for, request
 
 from todo_app.flask_config import Config
 from todo_app.data import session_items as session
+import os
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
 
+listtodo = os.environ.get('listtodo')
+listdoing = os.environ.get('listdoing')
+listdone = os.environ.get('listdone')
 
 @app.route('/')
 def index():
     items = session.get_items()
-    return render_template('index.html', items = items)
+    return render_template('index.html', items = items, todo = listtodo , doing =listdoing, done = listdone)
 
 
 @app.route('/items/new', methods=['POST'])

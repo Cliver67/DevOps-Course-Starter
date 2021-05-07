@@ -2,9 +2,17 @@ from flask import session
 import requests
 import json
 
-boardid = '608a91fd8a30ef4966d68da1'
-trello_key = 'ec35814e6002ff80fb49014a7a6f4ab9'
-trello_token = '064fb4e3f20e3417bef4a1525a7b6342fbffc2ee90f0b0ab1658a8a0bce906b3'
+import os
+
+boardid = os.environ.get('boardid')
+trello_key = os.environ.get('trello_key')
+trello_token = os.environ.get('trello_token')
+
+
+listtodo = os.environ.get('listtodo')
+listdoing = os.environ.get('listdoing')
+listdone = os.environ.get('listdone')
+
 
 def get_items():
 
@@ -44,7 +52,7 @@ def add_item(title):
     query = {
         'key': trello_key,
         'token': trello_token,
-        'idList': '608a9210a25e65624f49806b',
+        'idList': listtodo,
         'name': title
         }
 
@@ -63,7 +71,7 @@ def commence_item(id):
     Args:
         id = card id    
     """
-    return move_card(id,str('6092d58e13aa190b1d32ce19'))    
+    return move_card(id,listdoing)    
 
 def get_lists():
     
@@ -130,7 +138,7 @@ def complete_item(id):
         id = card id    
     """
 
-    move_card(id,str('608aa95fbe10572bf446d3cf'))
+    move_card(id,listdone)
 
 def reopen_item(id):
     """
@@ -138,5 +146,5 @@ def reopen_item(id):
     Args:
         id = card id    
     """
-    return move_card(id,str('608a9210a25e65624f49806b'))  
+    return move_card(id,listtodo)  
 
