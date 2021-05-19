@@ -54,13 +54,13 @@
 
             <div>
               <!--button to control status of item in list  doing / done/ reopen-->
-              {% if item.idList == '608a9210a25e65624f49806b' %}
+              {% if item.idList == todo %}
                 <a href="{{ url_for('commence_item', id=item.id) }}" class="badge badge-info">Start Item</a>
               {% endif %}
-              {% if item.idList == '6092d58e13aa190b1d32ce19' %}
+              {% if item.idList == doing %}
                 <a href="{{ url_for('complete_item', id=item.id) }}" class="badge badge-success">Close Item</a>
               {% endif %}
-              {% if item.idList == '608aa95fbe10572bf446d3cf' %}
+              {% if item.idList == done %}
                 <a href="{{ url_for('reopen_item', id=item.id) }}" class="badge badge-warning">Re-open Item</a>
               {% endif %}
               <!--end button if-->

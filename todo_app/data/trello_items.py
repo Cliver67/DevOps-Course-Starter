@@ -1,17 +1,15 @@
-from flask import session
 import requests
 import json
 
 import os
 
-boardid = os.environ.get('boardid')
-trello_key = os.environ.get('trello_key')
-trello_token = os.environ.get('trello_token')
+boardid = os.environ.get('BOARDID')
+trello_key = os.environ.get('TRELLO_KEY')
+trello_token = os.environ.get('TRELLO_TOKEN')
 
-
-listtodo = os.environ.get('listtodo')
-listdoing = os.environ.get('listdoing')
-listdone = os.environ.get('listdone')
+listtodo = os.environ.get('LISTTODO')
+listdoing = os.environ.get('LISTDOING')
+listdone = os.environ.get('LISTDONE')
 
 
 def get_items():
@@ -28,11 +26,11 @@ def get_items():
         'token': trello_token
             }
 
-    response = requests.request(
-            "GET",
-            url,
-            params=query
-            )
+   # response = requests.request(
+   #         "GET",
+   #         url,
+   #         params=query
+   #         )
 
     return make_get_request(url, query)
 
@@ -73,19 +71,6 @@ def commence_item(id):
     """
     return move_card(id,listdoing)    
 
-def get_lists():
-    
-    url = "https://api.trello.com/1/boards/" + str(boardid) + "/lists"
-
-    query = {
-    'key': trello_key,
-    'token': trello_token
-    }
-
-    lists = make_get_request(url, query)
-    
-    #iterate through response to build lists object for comparison
-    return lists
 
 def make_get_request(url, query):
 
