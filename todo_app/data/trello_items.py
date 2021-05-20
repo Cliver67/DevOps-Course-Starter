@@ -1,3 +1,4 @@
+from todo_app.data.Item import Item
 import requests
 import json
 
@@ -19,20 +20,17 @@ def get_items():
     Returns: response json() containing trello card names / id's and lists id's
     """
 
-    url = 'https://api.trello.com/1/boards/' + boardid +'/cards?fields=name,idList'
+    url = 'https://api.trello.com/1/boards/' + boardid +'/cards?fields=name,idList,dateLastActivity'
 
     query = {
         'key': trello_key,
         'token': trello_token
             }
 
-   # response = requests.request(
-   #         "GET",
-   #         url,
-   #         params=query
-   #         )
+    responseJson = make_get_request(url, query)
+    return [Item(itemJson['id'],  itemJson['idList'], itemJson['name'],itemJson['dateLastActivity']) for itemJson in responseJson]
 
-    return make_get_request(url, query)
+    #return make_get_request(url, query)
 
 def add_item(title):
     """

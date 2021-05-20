@@ -26,17 +26,17 @@ def add_item():
     return redirect(url_for('index'))
 
 
-@app.route('/items/<id>/complete')
+@app.route('/items/<id>/complete', methods=['POST'])
 def complete_item(id):
     trelloItems.complete_item(id)
     return redirect(url_for('index'))
 
-@app.route('/items/<id>/commence')
+@app.route('/items/<id>/commence', methods=['POST'])
 def commence_item(id):
     trelloItems.commence_item(id)
     return redirect(url_for('index'))
 
-@app.route('/items/<id>/reopen')
+@app.route('/items/<id>/reopen', methods=['POST'])
 def reopen_item(id):
     trelloItems.reopen_item(id)
     return redirect(url_for('index'))
