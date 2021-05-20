@@ -43,23 +43,9 @@ def add_item(title):
         item: The saved item.
     """
 
-    url = "https://api.trello.com/1/cards"
+    item = Item.newItem(title)
 
-    query = {
-        'key': trello_key,
-        'token': trello_token,
-        'idList': listtodo,
-        'name': title
-        }
-
-    response = requests.request(
-        "POST",
-        url,
-        params=query
-        )
-
-    
-    return response.json()
+    return item
 
 def commence_item(id):
     """

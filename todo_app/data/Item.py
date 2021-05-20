@@ -33,10 +33,12 @@ class Item:
             )
         #valid response received
         if response.status_code == 200:
-            id = response.json("id")
-            title = response.json("name")
-            status = response.json("idList")
-            dateLastAction = response.json("dateLastAction")
+            
+            jsonResponse = response.json()
+            id = jsonResponse["id"]
+            name = jsonResponse["name"]
+            idList = jsonResponse["idList"]
+            dateLastActivity = jsonResponse["dateLastActivity"]
 
 
     def __str__(self):
