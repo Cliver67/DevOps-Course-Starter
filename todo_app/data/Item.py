@@ -15,7 +15,7 @@ class Item:
         self.dateLastActivity = dateLastActivity
 
     
-    def newItem(itemDescription):
+    def createItemInTrello(itemDescription):
 
         url = "https://api.trello.com/1/cards"
 

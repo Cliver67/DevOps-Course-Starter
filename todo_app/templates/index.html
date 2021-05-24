@@ -55,20 +55,17 @@
             <div>
               <!--button to control status of item in list  doing / done/ reopen-->
               {% if item.idList == todo %}
-                <!--a href="{{ url_for('commence_item', id=item.id) }}" class="badge badge-info">Start Item</a-->
                 <form action="{{ url_for('commence_item', id=item.id) }}" method="POST">
                   <button type="submit" class="badge badge-info">Start item</button>
                 </form>
 
               {% endif %}
               {% if item.idList == doing %}
-                <!--a href="{{ url_for('complete_item', id=item.id) }}" class="badge badge-success">Close Item</a-->
                 <form action="{{ url_for('complete_item', id=item.id) }}" method="POST">
                   <button type="submit" class="badge badge-success">Close item</button>
                 </form>
                 {% endif %}
               {% if item.idList == done %}
-                <!--a href="{{ url_for('reopen_item', id=item.id) }}" class="badge badge-warning">Re-open Item</a-->
                 <form action="{{ url_for('reopen_item', id=item.id) }}" method="POST">
                   <button type="submit" class="badge badge-warning">Re-open item</button>
                 </form>

@@ -43,7 +43,7 @@ def add_item(title):
         item: The saved item.
     """
 
-    item = Item.newItem(title)
+    item = Item.createItemInTrello(title)
 
     return item
 
