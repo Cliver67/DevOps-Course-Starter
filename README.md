@@ -50,3 +50,15 @@ You should see output similar to the following:
  * Debugger PIN: 226-556-590
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+for trello integration 
+the following variables/section  are required in the projects .env file
+
+#Trello Keys
+boardid = ID of the Trello board being used
+trello_key = valid api key
+trello_token = valid api token
+listtodo = list id for the "Todo" list
+listdoing = listid for the "Doing" list
+listdone = listid for the "Done" List
+

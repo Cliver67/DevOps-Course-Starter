@@ -1,3 +1,4 @@
+
 {% extends "layout.html" %}
 {% block title %}To-Do App{% endblock %}
 
@@ -6,50 +7,74 @@
     <h1 class="display-4">Clive's To-Do App</h1>
     <p class="lead">Just another to-do app.</p>
 
-     <!-- form for new item entry-->
-   <div class="newitem">
-    <form action="/newitem" method="POST" class="newitem">
-      <div class="newitem">
-        <p class="lead"><b><u>Enter details of new task.</u></b></p>
-        <label class="lead" for="newitem">New Item Details: </label>
-        <input type="text" name="newitem" id="newitem" required>
-        <input type="submit" value="Add to List">
-      </div>        
-    </form>
+    <!-- New item creation-->
+    <div class="row">
+      <div class="col-md-12">
+        <h5>New item</h5>
+        <form action="{{ url_for('add_item') }}" method="POST">
+          <div class="form-group form-row align-items-center">
+            <div class="col-auto">
+              <label for="title-input">Title</label>
+            </div>
+            <div class="col">
+              <input type="text" name="title" id="title-input" class="form-control">
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-success">Add Item</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-   <!-- End of new item form-->
-  </div>
-   
+
   <div class="row">
     <div class="col-md-12">
       <h2>Items</h2>
       <ul class="list-group mb-4">
         {% for item in items %}
-          <li>
-            <!--button type="button" class="btn btn-success">Mark as Done</button-->
-            {{ item.status }} - {{item.title}}
-            
+          <li class="list-group-item flex-column">
+            <div class="d-flex w-100 justify-content-between">
+              
+              <h6 class="mt-1 mb-1">{{ item.name }}</h6>
+              
+              <!--inactive button to show status of item in list todo / doing / done-->
+              <!--button to control status of item in list  doing / done/ reopen-->
+              {% if item.idList ==  todo %}
+              <span class="badge badge-secondary">todo</span>
+              {% endif %}
+              {% if item.idList == doing %}
+              <span class="badge badge-primary">Open</span>
+              {% endif %}
+              {% if item.idList == done %}
+              <span class="badge badge-success">Complete</span>
+              {% endif %}
+              <!--end button if-->
+            </div>
+
+            <div>
+              <!--button to control status of item in list  doing / done/ reopen-->
+              {% if item.idList == todo %}
+                <form action="{{ url_for('commence_item', id=item.id) }}" method="POST">
+                  <button type="submit" class="badge badge-info">Start item</button>
+                </form>
+
+              {% endif %}
+              {% if item.idList == doing %}
+                <form action="{{ url_for('complete_item', id=item.id) }}" method="POST">
+                  <button type="submit" class="badge badge-success">Close item</button>
+                </form>
+                {% endif %}
+              {% if item.idList == done %}
+                <form action="{{ url_for('reopen_item', id=item.id) }}" method="POST">
+                  <button type="submit" class="badge badge-warning">Re-open item</button>
+                </form>
+              {% endif %}
+              <!--end button if-->
+            </div>
           </li>
         {% endfor %}
-        <!-- List the todo items here -->
       </ul>
     </div>
   </div>
- 
-<!--
-     <div>
-
-      experiment
-     <button type="button" class="btn btn-primary">Primary</button>
-     <button type="button" class="btn btn-secondary">Secondary</button>
-      <button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
-
-<button type="button" class="btn btn-link">Link</button>
-</div>
--->
 {% endblock %}
