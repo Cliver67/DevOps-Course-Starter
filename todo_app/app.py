@@ -2,8 +2,10 @@
 from flask import Flask, render_template, redirect, url_for, request
 
 from todo_app.flask_config import Config
+from todo_app import ViewModel
 from todo_app.data import trello_items as trelloItems
 import os
+
 
 
 app = Flask(__name__)
@@ -16,8 +18,10 @@ listdone = os.environ.get('LISTDONE')
 @app.route('/')
 def index():
     items = trelloItems.get_items()
-    return render_template('index.html', items = items, todo = listtodo , doing =listdoing, done = listdone)
-
+    item_view_model = ViewModel.ViewModel(items,listtodo, listdoing, listdone)
+    return render_template('index.html', view_model=item_view_model)
+    #return render_template('index.html', items = items, todo = listtodo , doing =listdoing, done = listdone)
+    
 
 @app.route('/items/new', methods=['POST'])
 def add_item():
