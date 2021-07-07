@@ -62,3 +62,5 @@ listtodo = list id for the "Todo" list
 listdoing = listid for the "Doing" list
 listdone = listid for the "Done" List
 
+#Testing
+Using Pytest for automated testing.
