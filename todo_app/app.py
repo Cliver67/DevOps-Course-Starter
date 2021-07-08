@@ -18,9 +18,9 @@ listdone = os.environ.get('LISTDONE')
 @app.route('/')
 def index():
     items = trelloItems.get_items()
-    item_view_model = ViewModel.ViewModel(items,listtodo, listdoing, listdone)
+    item_view_model = ViewModel.ViewModel(items,listtodo, listdoing, listdone,True, True, True)
     return render_template('index.html', view_model=item_view_model)
-    #return render_template('index.html', items = items, todo = listtodo , doing =listdoing, done = listdone)
+    
     
 
 @app.route('/items/new', methods=['POST'])

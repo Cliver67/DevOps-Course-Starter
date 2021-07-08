@@ -1,5 +1,6 @@
 
-from todo_app import inc_dec    # The code to test
+
+from  todo_app.tests import inc_dec    # The code to test
 import unittest   # The test framework
 
 class Test_TestIncrementDecrement(unittest.TestCase):

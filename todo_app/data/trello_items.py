@@ -28,10 +28,11 @@ def get_items():
             }
 
     responseJson = make_get_request(url, query)
+
+    
     return [Item(itemJson['id'],  itemJson['idList'], itemJson['name'],itemJson['dateLastActivity']) for itemJson in responseJson]
 
-    #return make_get_request(url, query)
-
+    
 def add_item(title):
     """
     Makes Trello POST call to create a new card 
