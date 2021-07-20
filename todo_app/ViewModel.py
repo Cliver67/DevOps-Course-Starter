@@ -1,33 +1,30 @@
-from _typeshed import Self
 
-displaylist = []
 class ViewModel:
 
-
-    def __init__(self, items, todo, doing, done,showtodo, showdoing, showdone):
+    def __init__(self, items, todo, doing, done):
         self._items = items
         self._todo = todo
         self._doing = doing
         self._done = done
-        self._showtodo = showtodo
-        self._showdoing = showdoing
-        self._showdone = showdone
+        #self._showtodo = showtodo
+        #self._showdoing = showdoing
+        #self._showdone = showdone
 
     #returned cards from API call to Trello
     @property
     def items(self):
         #
         
-        if (self.showtodo == True):
-            self.todo_items()
+        #if (self.showtodo == True):
+        #    self.todo_items()
         
-        if (self.showdoing ==True):
-            self.doing_items()
+        #if (self.showdoing ==True):
+        #    self.doing_items()
 
-        if (self.showdone ==True):
-            self.done_items(self._items, self._done )
+        #if (self.showdone ==True):
+        #    self.done_items(self._done )
         
-
+        #self._items == displaylist()
         #change this to show new items i.e filtered based on showxx
         return self._items
 
@@ -58,15 +55,17 @@ class ViewModel:
     
 
     #methods to control what to return
-    def done_items (items, filter):
+    @property
+    def done_items (self):
         #return only items that are in the Done list
         #consider last update date later on
-        for x in items:
-            if(x.idList == filter):
+        displaylist = []
+        for x in self._items:
+            if(x.idList == self._done):
                 #filter match
                 displaylist.append(x)
                 
-        return 0
+        return displaylist
 
     def doing_items():
          #return only items that are in the Done list
