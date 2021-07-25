@@ -65,7 +65,7 @@
 
           <div>
             <!--button to control status of item in list  doing / done/ reopen-->
-            <form action="{{ url_for('commence_item', id=item.id) }}" method="POST">
+            <form action="{{ url_for('complete_item', id=item.id) }}" method="POST">
                 <button type="submit" class="badge badge-success">Complete</button>
             </form>
           </div>
@@ -87,7 +87,7 @@
 
         <div>
           <!--button to control status of item in list  doing / done/ reopen-->
-          <form action="{{ url_for('commence_item', id=item.id) }}" method="POST">
+          <form action="{{ url_for('reopen_item', id=item.id) }}" method="POST">
               <button type="submit" class="badge badge-warning">Re-open item</button>
           </form>
         </div>
