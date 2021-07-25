@@ -1,4 +1,3 @@
-
 class ViewModel:
 
     def __init__(self, items, todo, doing, done):
@@ -6,26 +5,11 @@ class ViewModel:
         self._todo = todo
         self._doing = doing
         self._done = done
-        #self._showtodo = showtodo
-        #self._showdoing = showdoing
-        #self._showdone = showdone
-
+        
     #returned cards from API call to Trello
     @property
     def items(self):
-        #
         
-        #if (self.showtodo == True):
-        #    self.todo_items()
-        
-        #if (self.showdoing ==True):
-        #    self.doing_items()
-
-        #if (self.showdone ==True):
-        #    self.done_items(self._done )
-        
-        #self._items == displaylist()
-        #change this to show new items i.e filtered based on showxx
         return self._items
 
     #Key values for columns
@@ -64,16 +48,26 @@ class ViewModel:
             if(x.idList == self._done):
                 #filter match
                 displaylist.append(x)
-                
         return displaylist
 
-    def doing_items():
-         #return only items that are in the Done list
+    @property
+    def doing_items(self):
+         #return only items that are in the doing list
+        displaylist = []
+        for x in self._items:
+            if(x.idList == self._doing):
+                #filter match
+                displaylist.append(x)
+        return displaylist
         
-        return 0
-
-    def todo_items():
-        #return only items that are in the Done list
-        
-        return 0       
+    @property
+    def todo_items(self):
+        #return only items that are in the todo list
+        displaylist = []
+        for x in self._items:
+            if(x.idList == self._todo):
+                #filter match
+                displaylist.append(x)
+                
+        return displaylist       
 

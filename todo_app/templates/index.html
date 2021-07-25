@@ -30,51 +30,70 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h2>Items</h2>
-      <ul class="list-group mb-4">
-        {% for item in view_model.items %}
+        <ul class="list-group mb-4">
+          <h2>To do Items</h2>
+          {% for item in view_model.todo_items %}
           <li class="list-group-item flex-column">
             <div class="d-flex w-100 justify-content-between">
-              
               <h6 class="mt-1 mb-1">{{ item.name }}</h6>
-              
               <!--inactive button to show status of item in list todo / doing / done-->
               <!--button to control status of item in list  doing / done/ reopen-->
-              {% if item.idList ==  view_model.todo %}
               <span class="badge badge-secondary">todo</span>
-              {% endif %}
-              {% if item.idList == view_model.doing %}
-              <span class="badge badge-primary">Open</span>
-              {% endif %}
-              {% if item.idList == view_model.done %}
-              <span class="badge badge-success">Complete</span>
-              {% endif %}
-              <!--end button if-->
             </div>
 
             <div>
               <!--button to control status of item in list  doing / done/ reopen-->
-              {% if item.idList == view_model.todo %}
-                <form action="{{ url_for('commence_item', id=item.id) }}" method="POST">
+              <form action="{{ url_for('commence_item', id=item.id) }}" method="POST">
                   <button type="submit" class="badge badge-info">Start item</button>
-                </form>
-
-              {% endif %}
-              {% if item.idList == view_model.doing %}
-                <form action="{{ url_for('complete_item', id=item.id) }}" method="POST">
-                  <button type="submit" class="badge badge-success">Close item</button>
-                </form>
-                {% endif %}
-              {% if item.idList == view_model.done %}
-                <form action="{{ url_for('reopen_item', id=item.id) }}" method="POST">
-                  <button type="submit" class="badge badge-warning">Re-open item</button>
-                </form>
-              {% endif %}
-              <!--end button if-->
+              </form>
             </div>
           </li>
         {% endfor %}
       </ul>
     </div>
+    <div class="col-md-12">
+      <ul class="list-group mb-4">
+        <h2>Items In Progress</h2>
+        {% for item in view_model.doing_items %}
+        <li class="list-group-item flex-column">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mt-1 mb-1">{{ item.name }}</h6>
+            <!--inactive button to show status of item in list todo / doing / done-->
+            <!--button to control status of item in list  doing / done/ reopen-->
+            <span class="badge badge-primary">Open</span>
+          </div>
+
+          <div>
+            <!--button to control status of item in list  doing / done/ reopen-->
+            <form action="{{ url_for('commence_item', id=item.id) }}" method="POST">
+                <button type="submit" class="badge badge-success">Complete</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-md-12">
+    <ul class="list-group mb-4">
+      <h2>Done Items</h2>
+      {% for item in view_model.done_items %}
+      <li class="list-group-item flex-column">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mt-1 mb-1">{{ item.name }}</h6>
+          <!--inactive button to show status of item in list todo / doing / done-->
+          <!--button to control status of item in list  doing / done/ reopen-->
+          <span class="badge badge-success">Complete</span>
+        </div>
+
+        <div>
+          <!--button to control status of item in list  doing / done/ reopen-->
+          <form action="{{ url_for('commence_item', id=item.id) }}" method="POST">
+              <button type="submit" class="badge badge-warning">Re-open item</button>
+          </form>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
   </div>
 {% endblock %}
