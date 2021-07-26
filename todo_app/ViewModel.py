@@ -1,3 +1,5 @@
+from datetime import datetime, date, timedelta
+
 class ViewModel:
 
     def __init__(self, items, todo, doing, done):
@@ -69,5 +71,46 @@ class ViewModel:
                 #filter match
                 displaylist.append(x)
                 
-        return displaylist       
+        return displaylist  
+
+    @property
+    def should_show_all_done_items(self):
+        displaylist = []
+        for x in self._items:
+            if(x.idList == self._done):
+                #filter match
+                displaylist.append(x)
+        return displaylist
+
+    @property
+    def recent_done_items(self):
+        displaylist = []
+        for x in self._items:
+            if(x.idList == self._done):
+                #filter match
+                #check the last action date against current date
+                #display is done today
+                format = "%Y-%m-%d"
+                lastaction = datetime.strptime(x.dateLastActivity, format)
+                #lastaction = x.dateLastActivity
+                diff = lastaction - date.today()
+                if (diff.days ==0 ):
+                    displaylist.append(x)
+                
+                print (x.dateLastActivity)
+        return displaylist
+    
+    @property
+    def older_done_items(self):
+
+        displaylist = []
+        for x in self._items:
+            if(x.idList == self._done):
+                #filter match
+                #check the last action date against current date
+                #display if done before today
+
+
+                displaylist.append(x)
+        return displaylist
 
