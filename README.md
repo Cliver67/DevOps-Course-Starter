@@ -79,6 +79,10 @@ Using Pytest for automated testing.
 #test_view_model_can_filter_doing_items
 #test_view_model_can_filter_todo_items
 
+#test_view_model_can_limit_done_items will use the displaylimt property on done items defaulted to 5 but can be overridden
 
+#datelastactivity is referenced in the following tests
+#test_view_model_can_show_recent_done_items - will filter items that are done where the datelastactivity matches current date
+#test_view_model_can _show_older_done_items - will filter done items where datelastactivity is prior to todays date
 
 

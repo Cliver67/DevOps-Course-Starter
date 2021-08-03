@@ -86,3 +86,17 @@ def test_view_model_can_show_older_done_items():
     view_model = ViewModel.ViewModel([item1, item2, item3, item4, item5, item6],"todo","Doing","Done")
     items_todo = view_model.older_done_items
     assert len(items_todo) == 3 
+
+def test_view_model_can_limit_done_items():
+
+    item1 = Item("1", "Done", "Do this", str(date.today() - timedelta(days=1)))
+    item2 = Item("2", "Done", "Do that", str(date.today() - timedelta(days=1)))
+    item3 = Item("3", "Done", "Do that", str(date.today() - timedelta(days=2)))
+    item4 = Item("4", "Done", "Do this", str(date.today() - timedelta(days=3)))
+    item5 = Item("5", "Done", "Do that",str(date.today() - timedelta(days=4)))
+    item6 = Item("6", "Done", "Do that", str(date.today() - timedelta(days=1)))
+    
+    view_model = ViewModel.ViewModel([item1, item2, item3, item4, item5, item6],"todo","Doing","Done",displaylimit= 4)
+    items_todo = view_model.limit_done_items()
+
+    assert len(items_todo) == 4 

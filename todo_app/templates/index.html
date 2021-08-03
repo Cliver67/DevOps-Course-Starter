@@ -76,7 +76,28 @@
   <div class="col-md-12">
     <ul class="list-group mb-4">
       <h2>Done Items</h2>
-      {% for item in view_model.done_items %}
+      
+      {% if view_model.show_all_done_items %}  
+      
+        {% for item in view_model.done_items %}
+        <li class="list-group-item flex-column">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mt-1 mb-1">{{ item.name }}</h6>
+            <!--inactive button to show status of item in list todo / doing / done-->
+            <!--button to control status of item in list  doing / done/ reopen-->
+            <span class="badge badge-success">Complete</span>
+          </div>
+
+          <div>
+            <!--button to control status of item in list  doing / done/ reopen-->
+            <form action="{{ url_for('reopen_item', id=item.id) }}" method="POST">
+                <button type="submit" class="badge badge-warning">Re-open item</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    {% else %}
+      {% for item in view_model.recent_done_items %}
       <li class="list-group-item flex-column">
         <div class="d-flex w-100 justify-content-between">
           <h6 class="mt-1 mb-1">{{ item.name }}</h6>
@@ -92,7 +113,9 @@
           </form>
         </div>
       </li>
-    {% endfor %}
+      {% endfor %}        
+        
+    {% endif %}
   </ul>
 </div>
   </div>

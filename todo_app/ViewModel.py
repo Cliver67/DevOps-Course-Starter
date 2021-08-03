@@ -2,11 +2,12 @@ from datetime import datetime, date, timedelta
 
 class ViewModel:
 
-    def __init__(self, items, todo, doing, done):
+    def __init__(self, items, todo, doing, done, displaylimit=5):
         self._items = items
         self._todo = todo
         self._doing = doing
         self._done = done
+        self._displaylimit = displaylimit
         
     #returned cards from API call to Trello
     @property
@@ -26,6 +27,10 @@ class ViewModel:
     @property
     def done(self):
         return self._done
+
+    @property
+    def displaylimit(self):
+        return self._displaylimit
 
     #proporties to control which categories to display
     @property
@@ -83,6 +88,16 @@ class ViewModel:
         return displaylist
 
     @property
+    def limit_done_items(self):
+        displaylist = []
+        for x in self._items:
+            if(x.idList == self._done):
+                #filter match
+                if len(displaylist) < self._displaylimit:
+                    displaylist.append(x)
+        return displaylist
+
+    @property
     def recent_done_items(self):
         displaylist = []
         for x in self._items:
@@ -90,16 +105,24 @@ class ViewModel:
                 #filter match
                 #check the last action date against current date
                 #display is done today
-                format = "%Y-%m-%d"
+                #format = "%Y-%m-%d"
+                format = "%Y-%m-%dT%H:%M:%S.%fZ"
                 lastaction = datetime.strptime(x.dateLastActivity, format)
-                #lastaction = x.dateLastActivity
-                diff = lastaction - date.today()
-                if (diff.days ==0 ):
+                
+                #diff = datetime.date(lastaction) - date.today().strftime('%Y-%m-%d')
+                diff = lastaction.date() - date.today() # This creates a datetime.timedelta variable
+                if (diff.days == 0 ):
                     displaylist.append(x)
                 
                 print (x.dateLastActivity)
         return displaylist
     
+
+    @property
+    def show_all_done_items(self):
+
+        return len(self.done.items) <= 5
+
     @property
     def older_done_items(self):
 
@@ -109,8 +132,14 @@ class ViewModel:
                 #filter match
                 #check the last action date against current date
                 #display if done before today
-
-
-                displaylist.append(x)
+                
+                format = "%Y-%m-%dT%H:%M:%S.%fZ"
+                lastaction = datetime.strptime(x.dateLastActivity, format)
+                
+                #diff = datetime.date(lastaction) - date.today().strftime('%Y-%m-%d')
+                diff = lastaction.date() - date.today() # This creates a datetime.timedelta variable
+                if (diff.days != 0 ):
+                     displaylist.append(x)
+                
         return displaylist
 
