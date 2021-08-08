@@ -2,12 +2,13 @@ from datetime import datetime, date, timedelta
 
 class ViewModel:
 
-    def __init__(self, items, todo, doing, done, displaylimit=5):
+    def __init__(self, items, todo, doing, done, limitdone= True):
         self._items = items
         self._todo = todo
         self._doing = doing
         self._done = done
-        self._displaylimit = displaylimit
+        self._limitdone = limitdone
+        #self._displaylimit = displaylimit
         
     #returned cards from API call to Trello
     @property
@@ -29,8 +30,12 @@ class ViewModel:
         return self._done
 
     @property
-    def displaylimit(self):
-        return self._displaylimit
+    def limitdone(self):
+        return self._limitdone
+
+    #@property
+    #def displaylimit(self):
+    #    return self._displaylimit
 
     #proporties to control which categories to display
     @property
@@ -78,14 +83,6 @@ class ViewModel:
                 
         return displaylist  
 
-    @property
-    def should_show_all_done_items(self):
-        displaylist = []
-        for x in self._items:
-            if(x.idList == self._done):
-                #filter match
-                displaylist.append(x)
-        return displaylist
 
     @property
     def limit_done_items(self):
@@ -93,7 +90,8 @@ class ViewModel:
         for x in self._items:
             if(x.idList == self._done):
                 #filter match
-                if len(displaylist) < self._displaylimit:
+                print (len(displaylist))
+                if len(displaylist) <= 4:
                     displaylist.append(x)
         return displaylist
 
@@ -114,15 +112,18 @@ class ViewModel:
                 if (diff.days == 0 ):
                     displaylist.append(x)
                 
-                print (x.dateLastActivity)
         return displaylist
     
 
     @property
     def show_all_done_items(self):
+       
+        if (self._limitdone):
+            return len(self.done_items) <= 4
+        else:
+            return True
 
-        return len(self.done.items) <= 5
-
+    
     @property
     def older_done_items(self):
 

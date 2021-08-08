@@ -77,8 +77,12 @@
     <ul class="list-group mb-4">
       <h2>Done Items</h2>
       
-      {% if view_model.show_all_done_items %}  
-      
+      {% if view_model.show_all_done_items %}
+        
+        <form action="{{ url_for('show_recent_complete') }}" method="POST">
+          <button type="submit" class="badge badge-info">Show Recent</button>
+        </form>  
+        
         {% for item in view_model.done_items %}
         <li class="list-group-item flex-column">
           <div class="d-flex w-100 justify-content-between">
@@ -97,6 +101,11 @@
         </li>
       {% endfor %}
     {% else %}
+      
+      <form action="{{ url_for('show_aged_complete') }}">
+        <button type="submit" class="badge badge-info">Show last 5 aged</button>
+      </form>  
+      
       {% for item in view_model.recent_done_items %}
       <li class="list-group-item flex-column">
         <div class="d-flex w-100 justify-content-between">

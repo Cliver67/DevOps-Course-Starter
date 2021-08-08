@@ -21,7 +21,18 @@ def index():
     item_view_model = ViewModel.ViewModel(items,listtodo, listdoing, listdone)
     return render_template('index.html', view_model=item_view_model)
     
+@app.route('/items/recent', methods=['POST'])
+def show_recent_complete():
+    items = trelloItems.get_items()
+    item_view_model = ViewModel.ViewModel(items,listtodo, listdoing, listdone)
+    return render_template('index.html', view_model=item_view_model)   
+
+@app.route('/items/aged')
+def show_aged_complete():
     
+    items = trelloItems.get_items()
+    item_view_model = ViewModel.ViewModel(items,listtodo, listdoing, listdone, limitdone = False)
+    return render_template('index.html', view_model=item_view_model)  
 
 @app.route('/items/new', methods=['POST'])
 def add_item():
@@ -47,7 +58,7 @@ def reopen_item(id):
 
 if __name__ == '__main__':
     app.run()
-    
+
 ###
 #def create_app():
 #    app = Flask(__name__)
