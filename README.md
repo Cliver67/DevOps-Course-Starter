@@ -62,11 +62,11 @@ listtodo = list id for the "Todo" list
 listdoing = listid for the "Doing" list
 listdone = listid for the "Done" List
 
-#Testing
+## Testing
 Using Pytest for automated testing.
 
 
-#Test Notes
+## Test Notes
 #Pytest  - 3 tests to ensure viewmodel property methods to filter items by 
 #state or list_id are self contained. no key information is required as s default
 #state is included within the test

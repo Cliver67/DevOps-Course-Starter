@@ -17,27 +17,24 @@ class ViewModel:
         return self._items
 
     #Key values for columns
-    @property
-    def todo(self):
-        return self._todo
-
-    @property
-    def doing(self):
-        return self._doing
-
-    @property
-    def done(self):
-        return self._done
-
-    @property
-    def limitdone(self):
-        return self._limitdone
+    #@property
+    #def todo(self):
+    #    return self._todo
 
     #@property
-    #def displaylimit(self):
-    #    return self._displaylimit
+    #def doing(self):
+    #    return self._doing
+
+    #@property
+    #def done(self):
+    #    return self._done
+
+    #@property
+    #def limitdone(self):
+    #    return self._limitdone
 
     #proporties to control which categories to display
+    
     @property
     def showdone(self):
         return self._showdone
@@ -103,7 +100,7 @@ class ViewModel:
                 #filter match
                 #check the last action date against current date
                 #display is done today
-                #format = "%Y-%m-%d"
+               
                 format = "%Y-%m-%dT%H:%M:%S.%fZ"
                 lastaction = datetime.strptime(x.dateLastActivity, format)
                 
