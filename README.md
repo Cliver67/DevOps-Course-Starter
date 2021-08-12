@@ -67,14 +67,21 @@ Using Pytest for automated testing.
 
 
 ## Test Notes
-#Pytest  - 3 tests to ensure viewmodel property methods to filter items by 
-#state or list_id are self contained. no key information is required as s default
-#state is included within the test
-#for each test a dictionary is built of string values to simulate a returned list of items from Trello
-#dictionary should contain 1 item in it with a listId that evaluates to the status ou are wanting to test (Done , todo, doing)
-#test asserts that the return dictionary contains a single item
-#these are id: idList : name : dateLastActivity:
-#dateLastActivity is not needed for the following tests and an empty string can be passed
+Pytest  - 3 tests to ensure viewmodel property methods to filter items by 
+state or list_id are self contained. no key information is required as s default
+state is included within the test
+for each test a dictionary is built of string values to simulate a returned list of items from Trello
+dictionary should contain 1 item in it with a listId that evaluates to the status ou are wanting to test (Done , todo, doing)
+test asserts that the return dictionary contains a single item
+
+These are :-
+    id: 
+    idList: 
+    name: 
+    dateLastActivity:
+
+dateLastActivity is not needed for the following tests and an empty string can be passed
+
 #test_view_model_can_filter_done_items
 #test_view_model_can_filter_doing_items
 #test_view_model_can_filter_todo_items
