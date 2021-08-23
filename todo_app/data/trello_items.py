@@ -4,10 +4,11 @@ import json
 
 import os
 
-boardid = os.environ.get('BOARDID')
+
 trello_key = os.environ.get('TRELLO_KEY')
 trello_token = os.environ.get('TRELLO_TOKEN')
 
+boardid = os.environ.get('BOARDID')
 listtodo = os.environ.get('LISTTODO')
 listdoing = os.environ.get('LISTDOING')
 listdone = os.environ.get('LISTDONE')

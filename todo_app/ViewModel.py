@@ -16,37 +16,6 @@ class ViewModel:
         
         return self._items
 
-    #Key values for columns
-    #@property
-    #def todo(self):
-    #    return self._todo
-
-    #@property
-    #def doing(self):
-    #    return self._doing
-
-    #@property
-    #def done(self):
-    #    return self._done
-
-    #@property
-    #def limitdone(self):
-    #    return self._limitdone
-
-    #proporties to control which categories to display
-    
-    @property
-    def showdone(self):
-        return self._showdone
-    @property
-    def showtodo(self):
-        return self._showtodo
-    @property
-    def showdoing(self):
-        return self._showdoing
-
-    
-
     #methods to control what to return
     @property
     def done_items (self):
