@@ -26,9 +26,9 @@ def test_index_page(mock_get_requests, client):
 
 def mock_get_lists(url, params):
     if url == f'https://api.trello.com/1/boards/{TEST_BOARD_ID}/lists':
-        response = Mock()
+        #response = Mock()
         # sample_trello_lists_response should point to some test response data
-        response.json.return_value = sample_trello_lists_response
-        return response
+        #response.json.return_value = sample_trello_lists_response
+        return #response
 
     return None

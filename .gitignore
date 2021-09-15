@@ -121,3 +121,7 @@ env/
 
 ### working files ###
 trello.txt
+
+### Vagrant ###
+.vagrant 
+
