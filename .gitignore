@@ -125,3 +125,6 @@ trello.txt
 ### Vagrant ###
 .vagrant 
 
+### Vagrant Logs ###
+logs.txt
+
