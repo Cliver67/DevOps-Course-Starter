@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  Development:
+    env_file:
+        - .env
+    build: . 
+    
+    .volumes: 
+        - type: bind
+          source: /todo_app
+          target: /app
+
+  Production:
+    env_file:
+        - .env.prd
+    build: . 
+    
+    .volumes: 
+        - type: bind
+          source: /todo_app
+          target: /app
+  
+     
