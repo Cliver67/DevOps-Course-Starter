@@ -19,7 +19,7 @@ FROM base as Development
 
 
 # Development Specific needs here
-CMD ["poetry", "run", "flask", "run", "--host 0.0.0.0"]    
+CMD ["poetry", "run", "flask", "run", "--host",  "0.0.0.0."]    
 
 
 FROM base as Production
