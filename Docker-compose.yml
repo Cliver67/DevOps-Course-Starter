@@ -1,24 +1,31 @@
 version: "3"
 
 services:
-  Development:
+  development:
     env_file:
         - .env
-    build: . 
+    build: 
+      context: .
+      target: development
     
-    .volumes: 
+    volumes: 
         - type: bind
-          source: /todo_app
-          target: /app
+          source: ./todo_app
+          target: /todo_app/todo_app
+    ports:
+        - "5000:5000"
 
-  Production:
+  production:
     env_file:
-        - .env.prd
-    build: . 
-    
+        - .env
+    build: 
+      context: .
+      target: production
+      
     .volumes: 
         - type: bind
-          source: /todo_app
-          target: /app
+          source: ./todo_app
+          target: /todo_app/todo_app
   
-     
+    ports:
+        - "5000:5000" 

@@ -10,7 +10,7 @@ COPY pyproject.toml poetry.toml poetry.lock ./
 #install dependencies
 RUN poetry install
 #Copy project files
-COPY . /
+COPY . ./
 #set startup and launch
 #working port
 EXPOSE 5000
@@ -19,7 +19,7 @@ FROM base as Development
 
 
 # Development Specific needs here
-CMD ["poetry", "run", "flask", "run"]    
+CMD ["poetry", "run", "flask", "run", "--host 0.0.0.0"]    
 
 
 FROM base as Production
