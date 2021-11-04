@@ -99,6 +99,8 @@ Docker Build for development instance
     docker build --target development --tag todo-app:dev .
 Docker Run for development instance
     docker run --rm -it -p 5000:5000/tcp --env-file .env todo-app:dev
+Option below alloows for hot reload to allow development to take place woithout the need for retart post change
+    docker run --rm -it -p 5000:5000/tcp --env-file .env --mount type=bind,source="$(pwd)"/todo_app,target=/todo_app/todo_app todo-app:dev 
 Docker build for production instance
     docker build --target production --tag todo-app:prd .    
 Docker run for production instance

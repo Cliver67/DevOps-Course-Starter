@@ -22,10 +22,10 @@ services:
       context: .
       target: production
       
-    .volumes: 
+    volumes: 
         - type: bind
           source: ./todo_app
           target: /todo_app/todo_app
   
     ports:
-        - "5000:5000" 
+        - "5001:5000" 

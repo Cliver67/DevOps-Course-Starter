@@ -45,11 +45,11 @@ def get_items():
     Returns: response json() containing trello card names / id's and lists id's
     """
 
-    url = 'https://api.trello.com/1/boards/' + str(get_boardid) +'/cards?fields=name,idList,dateLastActivity'
+    url = 'https://api.trello.com/1/boards/' + str(get_boardid()) +'/cards?fields=name,idList,dateLastActivity'
 
     query = {
-        'key': str(get_trello_key),
-        'token': str(get_trello_token)
+        'key': str(get_trello_key()),
+        'token': str(get_trello_token())
             }
 
     responseJson = make_get_request(url, query)
@@ -79,7 +79,7 @@ def commence_item(id):
     Args:
         id = card id    
     """
-    return move_card(id,str(get_list_doing))    
+    return move_card(id,str(get_list_doing()))    
 
 
 def make_get_request(url, query):
@@ -112,8 +112,8 @@ def move_card(id, listid):
             }   
 
     query = {
-    'key': str(get_trello_key),
-    'token': str(get_trello_token),
+    'key': str(get_trello_key()),
+    'token': str(get_trello_token()),
     'idList': listid
     }
 
@@ -133,7 +133,7 @@ def complete_item(id):
         id = card id    
     """
 
-    move_card(id,str(get_list_done))
+    move_card(id,str(get_list_done()))
 
 def reopen_item(id):
     """
@@ -141,5 +141,5 @@ def reopen_item(id):
     Args:
         id = card id    
     """
-    return move_card(id,str(get_list_todo))  
+    return move_card(id,str(get_list_todo()))  
 
