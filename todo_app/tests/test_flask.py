@@ -1,6 +1,6 @@
 import dotenv, pytest
 from todo_app import app
-from unittest.mock import patch
+from unittest.mock import patch , MagicMock
 
 #methods to get test board and list_id's
 
