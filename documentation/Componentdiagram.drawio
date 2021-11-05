@@ -1,0 +1,137 @@
+<mxfile host="65bd71144e">
+    <diagram id="JebWhv1AomGbWrM_I3GI" name="Component">
+        <mxGraphModel dx="1836" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#F1FAEE" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.folder;fillColor=#A8DADC;rounded=0;sketch=0;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="50" width="160" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.folder;fillColor=#A8DADC;rounded=0;sketch=0;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="310" width="150" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="index.html" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="85" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="layout.html" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="140" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="shape=flexArrow;endArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;labelBackgroundColor=#F1FAEE;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="30" y="135" as="sourcePoint"/>
+                        <mxPoint x="-100" y="134.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="Rendered Output &lt;br&gt;to Browser" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="-75" y="85" width="110" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="ViewModel.py" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="110" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="shape=flexArrow;endArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;labelBackgroundColor=#F1FAEE;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="180" y="300" as="sourcePoint"/>
+                        <mxPoint x="310" y="175" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="Invoke method call to &lt;br&gt;update a card list after &lt;br&gt;browser action" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="-190" y="270" width="130" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="shape=flexArrow;endArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;labelBackgroundColor=#F1FAEE;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="270" y="134.5" as="sourcePoint"/>
+                        <mxPoint x="210" y="134.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="trello_items.py" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="410" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=1;sketch=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#1D3557;endArrow=none;endFill=0;strokeColor=#457B9D;fillColor=#A8DADC;" parent="1" source="17" target="16" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="item.py" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="350" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="Styling/css reference" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="50" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="endArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="17" edge="1" target="24">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-60" y="390" as="sourcePoint"/>
+                        <mxPoint x="-10" y="340" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="" style="endArrow=none;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitX=0.077;exitY=1.15;exitDx=0;exitDy=0;exitPerimeter=0;endFill=0;" parent="1" source="20" target="7" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-60" y="400" as="sourcePoint"/>
+                        <mxPoint x="-10" y="350" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="Class Object for single &lt;br&gt;Trello card data&lt;br&gt;Includes create method invokes &lt;br&gt;TrelloAPI Call" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="210" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="" style="endArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.446;entryY=-0.012;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="16" edge="1" target="28">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint y="555" as="sourcePoint"/>
+                        <mxPoint x="10" y="505" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="28" value="Trello Card items class&lt;br&gt;includes methods fo update call on item object&lt;br&gt;(move from 1 list item to another)&lt;br&gt;requires env variables for Board and list ID's&lt;br&gt;along with Trello Secret keys" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="530" width="260" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="app.py" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="310" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="" style="endArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="1" source="29" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="270" y="360" as="sourcePoint"/>
+                        <mxPoint y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="32" value="Application Entry Point" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="-160" y="365" width="140" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="Env Config / Secrets" style="rounded=0;whiteSpace=wrap;html=1;sketch=0;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="400" width="90" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="" style="endArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="33" target="29" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="270" y="350" as="sourcePoint"/>
+                        <mxPoint x="320" y="300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="36" value="" style="html=1;dashed=0;whitespace=wrap;fillColor=#2875E2;strokeColor=#ffffff;points=[[0.005,0.63,0],[0.1,0.2,0],[0.9,0.2,0],[0.5,0,0],[0.995,0.63,0],[0.72,0.99,0],[0.5,1,0],[0.28,0.99,0]];shape=mxgraph.kubernetes.icon;prIcon=api;rounded=0;sketch=0;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="376" width="50" height="48" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;" parent="1" edge="1">
+                    <mxGeometry width="100" height="100" relative="1" as="geometry">
+                        <mxPoint x="500" y="399.5" as="sourcePoint"/>
+                        <mxPoint x="640" y="399.5" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="570" y="399.5"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="" style="shape=flexArrow;endArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;labelBackgroundColor=#F1FAEE;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-90" y="170" as="sourcePoint"/>
+                        <mxPoint x="110" y="310" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="Item(s) returned passed &lt;br&gt;to viewmodel for controlled&lt;br&gt;output&lt;br&gt;based on application rules" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fontColor=#1D3557;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="220" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="" style="shape=flexArrow;endArrow=classic;html=1;fontColor=#1D3557;strokeColor=#457B9D;fillColor=#A8DADC;labelBackgroundColor=#F1FAEE;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="29">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="140" y="620" as="sourcePoint"/>
+                        <mxPoint x="350" y="400" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
