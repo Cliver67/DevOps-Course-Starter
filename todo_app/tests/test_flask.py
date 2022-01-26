@@ -1,7 +1,10 @@
 import pytest
 import dotenv
 from todo_app import app
-from unittest.mock import patch
+from unittest.mock import patch , MagicMock
+
+#methods to get test board and list_id's
+
 
 
 @pytest.fixture
@@ -22,6 +25,7 @@ def client():
 #@patch('requests.get')
 #def test_index_page(mock_get_requests, client):
     # Replace call to requests.get(url) with our own function
+<<<<<<< HEAD
 #   mock_get_requests.side_effect = mock_get_lists
 #    response = client.get('/')
 
@@ -33,3 +37,25 @@ def client():
 #        # sample_trello_lists_response should point to some test response data
  #       return response
  #   return None
+=======
+    mock_get_requests.side_effect = mock_get_cards
+    response = client.get('/')
+
+#def mock_get_lists(url, params):
+#    if url == f'https://api.trello.com/1/boards/{TEST_BOARD_ID}/lists':
+#        response = Mock()
+#        # sample_trello_lists_response should point to some test response data
+#        response.json.return_value = sample_trello_lists_response
+#        return response
+#   return None
+
+def mock_get_cards(url,params):
+    #url to match  -  'https://api.trello.com/1/boards/' + get_boardid) +'/cards?fields=name,idList,dateLastActivity'
+    if url == f'https://api.trello.com/1/boards/{TEST_BOARD_ID}/cards?fields=name,idlist,dateLastActivity':
+        response = Mock()
+        #sample_trello_cards response with the requested fields
+        response.json.return_value = sample_trello_cards_response
+        return response
+    return None
+
+>>>>>>> c7f774b45eaac6ea9eaae0c4d7a5a856b0f8a33a
