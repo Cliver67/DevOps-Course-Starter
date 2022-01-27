@@ -12,6 +12,7 @@ from unittest.mock import patch
 from todo_app.data import trello_items
 
 
+
 #@pytest.fixture(scope="module")
 #def driver():
 #    with webdriver.Firefox() as driver:
@@ -47,7 +48,7 @@ class TestIntegration:
 
 
     @patch('requests.get')
-    def test_index_page(mock_get_requests, client):
+    def test_index_page(self, mock_get_requests, client):
         # Replace call to requests.get(url) with our own function
         mock_get_requests.side_effect = TestIntegration.mock_get_lists( url="https://api.trello.com/1/boards/mockboard/lists", params=None)
         response = client.get('/')
@@ -58,18 +59,18 @@ class TestIntegration:
         
         #assert response.data 
 
+
     @patch('requests.get')
-    def test_cards_pull(mock_get_cards, client):
+    def test_cards_pull(self, mock_get_cards, client):
         mock_get_cards.side_effect = TestIntegration.mock_get_cards(url='https://api.trello.com/1/boards/mockboard/cards',params=None)
         response = client.get('/')
-        
-        
+
     
-    
-    def mock_get_lists( url, params):
-        print(url)
+    def mock_get_lists(url, params):
+        
         if url == f'https://api.trello.com/1/boards/mockboard/lists':
-            response = mock.Mock()
+ 
+            response = mock.MagicMock()
 
             # sample_trello_lists_response should point to some test response data
             response.json.return_value = TestIntegration.mock_trello_lists_response
@@ -77,10 +78,9 @@ class TestIntegration:
             return response
         return None
 
-
     def mock_get_cards(url,params):
         if url == f'https://api.trello.com/1/boards/mockboard/cards':
-            response = mock.Mock()
+            response = mock.MagicMock()
             #sample_trello_cards response with the requested fields
             response.json.return_value = TestIntegration.mock_trello_cards_response
             return response
