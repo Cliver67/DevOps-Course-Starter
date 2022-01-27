@@ -86,11 +86,13 @@ def make_get_request(url, query):
 
     geturl = url
 
-    response = requests.request(
-            "GET",
-            geturl,
-            params=query
-            )
+
+    response = requests.get(geturl,params=query)
+    #response = requests.request(
+    #        "GET",
+    #        geturl,
+    #        params=query
+    #        )
 
     return response.json()
 
