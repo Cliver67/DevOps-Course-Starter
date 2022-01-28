@@ -45,11 +45,11 @@ def get_items():
     Returns: response json() containing trello card names / id's and lists id's
     """
 
-    url = 'https://api.trello.com/1/boards/' + str(get_boardid) +'/cards?fields=name,idList,dateLastActivity'
+    url = 'https://api.trello.com/1/boards/' + get_boardid() +'/cards?fields=name,idList,dateLastActivity'
 
     query = {
-        'key': str(get_trello_key),
-        'token': str(get_trello_token)
+        'key': get_trello_key(),
+        'token': get_trello_token()
             }
 
     responseJson = make_get_request(url, query)
