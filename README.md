@@ -54,11 +54,47 @@ Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser
 for trello integration 
 the following variables/section  are required in the projects .env file
 
-#Trello Keys
+## Trello Keys
 boardid = ID of the Trello board being used
 trello_key = valid api key
 trello_token = valid api token
 listtodo = list id for the "Todo" list
 listdoing = listid for the "Doing" list
 listdone = listid for the "Done" List
+
+## Testing
+Using Pytest for automated testing.
+
+## Test execution in Terminal window
+
+Poetry Run pytest
+
+## Test Notes
+Pytest  - 3 tests to ensure viewmodel property methods to filter items by 
+state or list_id are self contained. no key information is required as s default
+state is included within the test
+for each test a dictionary is built of string values to simulate a returned list of items from Trello
+dictionary should contain 1 item in it with a listId that evaluates to the status ou are wanting to test (Done , todo, doing)
+test asserts that the return dictionary contains a single item
+
+These are :-
+    id: 
+    idList: 
+    name: 
+    dateLastActivity:
+
+dateLastActivity is not needed for the following tests and an empty string can be passed
+
+test_view_model_can_filter_done_items
+test_view_model_can_filter_doing_items
+test_view_model_can_filter_todo_items
+
+test_view_model_can_limit_done_items will use the displaylimt property on done items defaulted to 5 but can be overridden
+
+datelastactivity is referenced in the following tests
+for tests to complete where datelast activity is needed date format needs to be (2021-08-03T11:37:05.733Z)
+
+test_view_model_can_show_recent_done_items - will filter items that are done where the datelastactivity matches current date
+test_view_model_can _show_older_done_items - will filter done items where datelastactivity is prior to todays date
+
 

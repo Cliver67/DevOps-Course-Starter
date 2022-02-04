@@ -4,13 +4,31 @@ import json
 
 import os
 
-boardid = os.environ.get('BOARDID')
-trello_key = os.environ.get('TRELLO_KEY')
-trello_token = os.environ.get('TRELLO_TOKEN')
 
-listtodo = os.environ.get('LISTTODO')
-listdoing = os.environ.get('LISTDOING')
-listdone = os.environ.get('LISTDONE')
+
+def get_trello_key():
+
+    return os.environ.get('TRELLO_KEY')
+
+def get_trello_token():
+
+    return os.environ.get('TRELLO_TOKEN')
+
+def get_boardid():
+
+    return os.environ.get('BOARDID')
+
+def get_list_todo():
+
+    return os.environ.get('LISTTODO')
+
+def get_list_doing():
+
+    return os.environ.get('LISTDOING')
+
+def get_list_done():
+
+    return os.environ.get('LISTDONE')
 
 
 def get_items():
@@ -20,18 +38,19 @@ def get_items():
     Returns: response json() containing trello card names / id's and lists id's
     """
 
-    url = 'https://api.trello.com/1/boards/' + boardid +'/cards?fields=name,idList,dateLastActivity'
+    url = 'https://api.trello.com/1/boards/' + get_boardid() +'/cards?fields=name,idList,dateLastActivity'
 
     query = {
-        'key': trello_key,
-        'token': trello_token
+        'key': get_trello_key(),
+        'token': get_trello_token()
             }
 
     responseJson = make_get_request(url, query)
+
+    
     return [Item(itemJson['id'],  itemJson['idList'], itemJson['name'],itemJson['dateLastActivity']) for itemJson in responseJson]
 
-    #return make_get_request(url, query)
-
+    
 def add_item(title):
     """
     Makes Trello POST call to create a new card 
@@ -53,18 +72,16 @@ def commence_item(id):
     Args:
         id = card id    
     """
-    return move_card(id,listdoing)    
+    return move_card(id,str(get_list_doing()))    
 
 
 def make_get_request(url, query):
 
     geturl = url
 
-    response = requests.request(
-            "GET",
-            geturl,
-            params=query
-            )
+
+    response = requests.get(geturl,params=query)
+    
 
     return response.json()
 
@@ -86,8 +103,8 @@ def move_card(id, listid):
             }   
 
     query = {
-    'key': trello_key,
-    'token': trello_token,
+    'key': str(get_trello_key()),
+    'token': str(get_trello_token()),
     'idList': listid
     }
 
@@ -107,7 +124,7 @@ def complete_item(id):
         id = card id    
     """
 
-    move_card(id,listdone)
+    move_card(id,str(get_list_done()))
 
 def reopen_item(id):
     """
@@ -115,5 +132,5 @@ def reopen_item(id):
     Args:
         id = card id    
     """
-    return move_card(id,listtodo)  
+    return move_card(id,str(get_list_todo()))  
 
