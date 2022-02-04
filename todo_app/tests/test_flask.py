@@ -38,7 +38,6 @@ def test_cards_pull( mock_get_cards, client):
     assert b'hello i am a card' in  response.data
 
 
-
 def get_cards(url,params):
 
     if url == f'https://api.trello.com/1/boards/mockboard/cards?fields=name,idList,dateLastActivity':
