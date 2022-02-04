@@ -4,10 +4,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", privileged: false, inline: <<-SHELL 
     sudo apt-get -y update
-    #TODO: Install pyenvv prerequisites
+    #Install pyenvv prerequisites
     sudo apt-get -y install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
-    #TODO: install pyenv
+    #Install pyenv
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
     echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
