@@ -97,4 +97,16 @@ for tests to complete where datelast activity is needed date format needs to be 
 test_view_model_can_show_recent_done_items - will filter items that are done where the datelastactivity matches current date
 test_view_model_can _show_older_done_items - will filter done items where datelastactivity is prior to todays date
 
-
+##Docker build and startup
+Docker Build for development instance
+    docker build --target development --tag todo-app:dev .
+Docker Run for development instance
+    docker run --rm -it -p 5000:5000/tcp --env-file .env todo-app:dev
+Option below alloows for hot reload to allow development to take place woithout the need for retart post change
+    docker run --rm -it -p 5000:5000/tcp --env-file .env --mount type=bind,source="$(pwd)"/todo_app,target=/todo_app/todo_app todo-app:dev 
+Docker build for production instance
+    docker build --target production --tag todo-app:prd .    
+Docker run for production instance
+    docker run --rm -it -p 5000:5000/tcp --env-file .env todo-app:prd
+    
+Note currently both instances using same .env file and contained secrets
