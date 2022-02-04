@@ -6,12 +6,20 @@ from todo_app import app
 import pytest
 import requests
 from selenium import webdriver
+import dotenv
+
 
 
 @pytest.fixture(scope='module')
 def app_with_temp_board():
+    #set environment variables
+    file_path = dotenv.find_dotenv('.env')
+    dotenv.load_dotenv(file_path, override=True)
+
+
+
     # create the new board & update the board id environment variable
-    board_id = create_trello_board()
+    board_id = create_trello_board('e2etesting')
     os.environ['TRELLO_BOARD_ID'] = board_id
 
     # construct the new application
@@ -60,8 +68,8 @@ def create_trello_board(boardname):
 
     query = {
         'name': '{boardname}',
-        'key': str(get_trello_key),
-        'token': str(get_trello_token)
+        'key': get_trello_key(),
+        'token': get_trello_token()
     }
 
     responseJson = requests.request(
@@ -84,8 +92,8 @@ def delete_trello_board(board_id):
     url = "https://api.trello.com/1/boards/{board_id}"
 
     query = {
-        'key': str(get_trello_key),
-        'token': str(get_trello_token)
+        'key': get_trello_key(),
+        'token': get_trello_token()
             }
 
     response = requests.request(
