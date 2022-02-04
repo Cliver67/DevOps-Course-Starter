@@ -65,6 +65,9 @@ listdone = listid for the "Done" List
 ## Testing
 Using Pytest for automated testing.
 
+## Test execution in Terminal window
+
+Poetry Run pytest
 
 ## Test Notes
 Pytest  - 3 tests to ensure viewmodel property methods to filter items by 

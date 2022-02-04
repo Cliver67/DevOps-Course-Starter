@@ -2,6 +2,7 @@
 from todo_app import ViewModel
 from todo_app.data.Item import Item
 from datetime import date, datetime,  timedelta
+from unittest.mock import patch 
 
 
 import pytest
@@ -39,7 +40,12 @@ def test_view_model_can_filter_todo_items():
     items_todo = view_model.todo_items
     assert len(items_todo) == 1
 
-    
+class FakeDatetime():
+    @classmethod
+    def today(cls):
+        return datetime.strptime('2022-01-27', '%Y-%m-%d').date()    
+
+@patch('todo_app.ViewModel.date', FakeDatetime)
 def test_view_model_can_show_recent_done_items():
 
     #dateformat  2021-08-03T11:37:05.733Z
@@ -48,7 +54,7 @@ def test_view_model_can_show_recent_done_items():
     #date1 = datetime.today().isoformat()
     #print (date1)
     
-    date1 = '2021-08-12T11:37:05.733Z'
+    date1 = '2022-01-27T11:37:05.733Z'
 
     item1 = Item("1", "Done", "Do this", str(date1)) #"2021-08-12T11:37:05.733Z")
     item2 = Item("2", "Done", "Do that", "2021-08-02T11:37:05.733Z")    #str(date.today() - timedelta(days=1)))
@@ -65,13 +71,14 @@ def test_view_model_can_show_recent_done_items():
     assert items_recent != [item5]  
     
 
+@patch('todo_app.ViewModel.date', FakeDatetime)
 def test_view_model_can_show_older_done_items():
-    item1 = Item("1", "Done", "Do this", "2021-08-12T11:37:05.733Z")
+    item1 = Item("1", "Done", "Do this", "2022-01-27T11:37:05.733Z")
     item2 = Item("2", "Done", "Do that", "2021-08-04T11:37:05.733Z")    #str(date.today() - timedelta(days=1)))
     item3 = Item("3", "Done", "Do that", "2021-08-03T11:37:05.733Z")    #str(date.today() - timedelta(days=2)))
     item4 = Item("4", "Done", "Do this", "2021-08-02T11:37:05.733Z")    #str(date.today() - timedelta(days=3)))
     item5 = Item("5", "Doing", "Do that", "2021-08-01T11:37:05.733Z")   #str(date.today() - timedelta(days=4)))
-    item6 = Item("6", "todo", "Do that", "2021-08-03T11:37:05.733Z")    #str(date.today()))
+    item6 = Item("6", "todo", "Do that", "2022-01-28T11:37:05.733Z")    #str(date.today()))
     
     view_model = ViewModel.ViewModel([item1, item2, item3, item4, item5, item6],"todo","Doing","Done")
     items_todo = view_model.older_done_items

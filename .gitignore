@@ -118,13 +118,14 @@ env/
 
 ### Configuration files ###
 .env
+.env.test
 
 ### working files ###
 trello.txt
 
-### Vagrant ###
-.vagrant 
-
 ### Vagrant Logs ###
 logs.txt
+
+### Vagrant Files ###
+.vagrant
 
