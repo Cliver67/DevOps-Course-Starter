@@ -29,3 +29,18 @@ services:
   
     ports:
         - "5001:5000" 
+
+  test:
+    env_file:
+        - .env.test
+    build: 
+      context: .
+      target: tests
+      
+    volumes: 
+        - type: bind
+          source: ./todo_app
+          target: /todo_app/todo_app
+  
+    ports:
+        - "5000:5000" 

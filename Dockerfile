@@ -26,4 +26,8 @@ FROM base as Production
 # Production Specific needs here
 CMD ["poetry", "run", "gunicorn", "--bind", "0.0.0.0:5000", "todo_app.app:create_app()"]
 
+#Testing Stage
+FROM base as test
+
+ENTRYPOINT [ "poetry" ,"run", "pytest"]
 

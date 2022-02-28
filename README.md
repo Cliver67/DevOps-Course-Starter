@@ -108,5 +108,8 @@ Docker build for production instance
     docker build --target production --tag todo-app:prd .    
 Docker run for production instance
     docker run --rm -it -p 5000:5000/tcp --env-file .env todo-app:prd
-    
 Note currently both instances using same .env file and contained secrets
+Docker build for Test instance
+    docker build --target production --tag todo-app:prd .    
+Docker run for Test instance
+    docker run --rm -it -p 5000:5000/tcp --env-file .env todo-app:prd
